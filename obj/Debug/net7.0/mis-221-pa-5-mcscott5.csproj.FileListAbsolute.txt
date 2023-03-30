@@ -1,0 +1,15 @@
+/Users/madisonscott/Documents/MIS221/PA5/mis-221-pa-5-mcscott5/bin/Debug/net7.0/mis-221-pa-5-mcscott5
+/Users/madisonscott/Documents/MIS221/PA5/mis-221-pa-5-mcscott5/bin/Debug/net7.0/mis-221-pa-5-mcscott5.deps.json
+/Users/madisonscott/Documents/MIS221/PA5/mis-221-pa-5-mcscott5/bin/Debug/net7.0/mis-221-pa-5-mcscott5.runtimeconfig.json
+/Users/madisonscott/Documents/MIS221/PA5/mis-221-pa-5-mcscott5/bin/Debug/net7.0/mis-221-pa-5-mcscott5.dll
+/Users/madisonscott/Documents/MIS221/PA5/mis-221-pa-5-mcscott5/bin/Debug/net7.0/mis-221-pa-5-mcscott5.pdb
+/Users/madisonscott/Documents/MIS221/PA5/mis-221-pa-5-mcscott5/obj/Debug/net7.0/mis-221-pa-5-mcscott5.csproj.AssemblyReference.cache
+/Users/madisonscott/Documents/MIS221/PA5/mis-221-pa-5-mcscott5/obj/Debug/net7.0/mis-221-pa-5-mcscott5.GeneratedMSBuildEditorConfig.editorconfig
+/Users/madisonscott/Documents/MIS221/PA5/mis-221-pa-5-mcscott5/obj/Debug/net7.0/mis-221-pa-5-mcscott5.AssemblyInfoInputs.cache
+/Users/madisonscott/Documents/MIS221/PA5/mis-221-pa-5-mcscott5/obj/Debug/net7.0/mis-221-pa-5-mcscott5.AssemblyInfo.cs
+/Users/madisonscott/Documents/MIS221/PA5/mis-221-pa-5-mcscott5/obj/Debug/net7.0/mis-221-pa-5-mcscott5.csproj.CoreCompileInputs.cache
+/Users/madisonscott/Documents/MIS221/PA5/mis-221-pa-5-mcscott5/obj/Debug/net7.0/mis-221-pa-5-mcscott5.dll
+/Users/madisonscott/Documents/MIS221/PA5/mis-221-pa-5-mcscott5/obj/Debug/net7.0/refint/mis-221-pa-5-mcscott5.dll
+/Users/madisonscott/Documents/MIS221/PA5/mis-221-pa-5-mcscott5/obj/Debug/net7.0/mis-221-pa-5-mcscott5.pdb
+/Users/madisonscott/Documents/MIS221/PA5/mis-221-pa-5-mcscott5/obj/Debug/net7.0/mis-221-pa-5-mcscott5.genruntimeconfig.cache
+/Users/madisonscott/Documents/MIS221/PA5/mis-221-pa-5-mcscott5/obj/Debug/net7.0/ref/mis-221-pa-5-mcscott5.dll
