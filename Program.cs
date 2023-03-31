@@ -8,12 +8,5 @@ System.Console.WriteLine(mike.ToString());
 // System.Console.WriteLine(today.ToShortDateString());
 // System.Console.WriteLine(today.ToShortTimeString());
 
-Listings aList = new Listings();
-try{
-    aList.SetDate("3-30-2023");
-    System.Console.WriteLine(aList.GetDate());
-} catch {
-    System.Console.WriteLine("Invalid");
-}
 
 //System.Console.WriteLine(aList.GetDate()); 
