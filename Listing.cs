@@ -14,11 +14,11 @@ namespace mis_221_pa_5_mcscott5
 
         }
 
-        public Listing(string id, string trainerName, DateOnly date, TimeOnly time, double cost, string taken){
+        public Listing(string id, string trainerName, string date, string time, double cost, string taken){
             this.id = id;
             this.trainerName = trainerName;
-            this.date = date;
-            this.time = time;
+            this.date = DateOnly.Parse(date);
+            this.time = TimeOnly.Parse(time);
             this.cost = cost;
             this.taken = taken;
         }
