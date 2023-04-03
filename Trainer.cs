@@ -7,8 +7,6 @@ namespace mis_221_pa_5_mcscott5
         private string mailingAddress;
         private string emailAddress;
 
-        static private int count;
-
         public Trainer(){
 
         }
@@ -31,6 +29,10 @@ namespace mis_221_pa_5_mcscott5
             this.name = name;
         }
 
+        public string GetName(){
+            return this.name;
+        }
+
         public string GetMailingAddress(){
             return this.mailingAddress;
         }
@@ -47,21 +49,14 @@ namespace mis_221_pa_5_mcscott5
             this.emailAddress = emailAddress;
         }
 
-        static public void SetCount(int count){
-            Trainer.count = count;
-        }
-
-        static public void IncCount(){
-            Trainer.count++;
-        }
-
-        static public int GetCount(){
-            return Trainer.count;
-        }
-
         public override string ToString()
         {
             return $"ID: {this.id}\nName: {this.name}\nMailing Address: {this.mailingAddress}\nEmail Address: {this.emailAddress}";
+        }
+
+        public string ToFile()
+        {
+            return $"{this.id}#{this.name}#{this.mailingAddress}#{this.emailAddress}";
         }
 
     }
