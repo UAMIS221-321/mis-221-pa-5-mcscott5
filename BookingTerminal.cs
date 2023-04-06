@@ -32,10 +32,12 @@ namespace mis_221_pa_5_mcscott5
 
         static void DisplayMenu()
         {
+            System.Console.WriteLine("------------------------------------------");
             Console.WriteLine("1:   View available training session");
             Console.WriteLine("2:   Book a session");
             Console.WriteLine("3:   Update session status");
             Console.WriteLine("4:   Return to Main Menu");
+            System.Console.WriteLine("------------------------------------------");
         }
 
         static bool ValidMenuChoice(string userInput)

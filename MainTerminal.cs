@@ -32,11 +32,13 @@ namespace mis_221_pa_5_mcscott5
 
         static void DisplayMenu()
         {
+            System.Console.WriteLine("------------------------------------------");
             Console.WriteLine("1:   Manage Trainer Data");
             Console.WriteLine("2:   Manage Listing Data");
             Console.WriteLine("3:   Manage Customer Booking Data");
             Console.WriteLine("4:   Run Reports");
             Console.WriteLine("5:   Exit Application");
+            System.Console.WriteLine("------------------------------------------");
         }
 
         static bool ValidMenuChoice(string userInput)
@@ -66,10 +68,12 @@ namespace mis_221_pa_5_mcscott5
             else if (userInput == "3")
             {
                 System.Console.WriteLine("booking");
+                BookingTerminal.bookingMenu();
             }
             else if (userInput == "4")
             {
                 System.Console.WriteLine("reports");
+                ReportTerminal.reportMenu();
             }
 
         }
