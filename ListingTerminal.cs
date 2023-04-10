@@ -54,9 +54,11 @@ namespace mis_221_pa_5_mcscott5
 
         static void Route(string userInput)
         {
+            ListingUtility lUtil = new ListingUtility();
             if (userInput == "1")
             {
                 System.Console.WriteLine("add");
+                lUtil.AddListing();
             }
             else if (userInput == "2")
             {

@@ -2,32 +2,43 @@ namespace mis_221_pa_5_mcscott5
 {
     public class Listing
     {
-        string id;
-        string trainerName;
-        public DateOnly date = new DateOnly();
-        TimeOnly time = new TimeOnly();
-        double cost;
-        string taken;
+        private int id;
+        private string trainerName;
+        private DateOnly date = new DateOnly();
+        private TimeOnly startTime = new TimeOnly();
+        private TimeOnly endTime = new TimeOnly();
+        private double cost;
+        private string status;
 
         //private Trainer[] trainers;
         public Listing(){
 
         }
 
-        public Listing(string id, string trainerName, string date, string time, double cost, string taken){
+        public Listing(int id, string trainerName, string date, string startTime, double cost, string status){
             this.id = id;
             this.trainerName = trainerName;
             this.date = DateOnly.Parse(date);
-            this.time = TimeOnly.Parse(time);
+            this.startTime = TimeOnly.Parse(startTime);
             this.cost = cost;
-            this.taken = taken;
+            this.status = status;
         }
 
-        public void SetId(string id){
+        public Listing(int id, string trainerName, string date, string startTime, string endTime, double cost, string status){
+            this.id = id;
+            this.trainerName = trainerName;
+            this.date = DateOnly.Parse(date);
+            this.startTime = TimeOnly.Parse(startTime);
+            this.endTime = TimeOnly.Parse(endTime);
+            this.cost = cost;
+            this.status = status;
+        }
+
+        public void SetId(int id){
             this.id = id;
         }
 
-        public string GetId(){
+        public int GetId(){
             return this.id;
         }
 
@@ -47,12 +58,20 @@ namespace mis_221_pa_5_mcscott5
             return this.date.ToString();
         }
 
-        public void SetTime(string time){
-            this.time = TimeOnly.Parse(time);
+        public void SetStartTime(string time){
+            this.startTime = TimeOnly.Parse(time);
         }
 
-        public string GetTime(){
-            return this.time.ToString();
+        public string GetStartTime(){
+            return this.startTime.ToString();
+        }
+
+        public void SetEndTime(string time){
+            this.startTime = TimeOnly.Parse(time);
+        }
+
+        public string GetEndTime(){
+            return this.startTime.ToString();
         }
 
         public void SetCost(double cost){
@@ -63,22 +82,22 @@ namespace mis_221_pa_5_mcscott5
             return this.cost;
         }
 
-        public void SetListingStatus(string taken){
-            this.taken = taken;
+        public void SetListingStatus(string status){
+            this.status = status;
         }
 
         public string GetListingStatus(){
-            return this.taken;
+            return this.status;
         }
 
         public override string ToString()
         {
-            return $"Listing ID: {this.id}\nTrainer Name: {this.trainerName}\nDate: {this.date.ToString()}\nTime: {this.time.ToString()}\nCost: {this.cost}\nStatus: {this.taken}";
+            return $"Listing ID: {this.id}\nTrainer Name: {this.trainerName}\nDate: {this.date.ToString()}\nStart Time: {this.startTime.ToString()}\nEnd Time: {this.endTime.ToString()}\nCost: {this.cost}\nStatus: {this.status}";
         }
 
         public string ToFile()
         {
-            return $"{this.id}#{this.trainerName}#{this.date.ToString()}#{this.time.ToString()}#{this.cost}#{this.taken}";
+            return $"{this.id}#{this.trainerName}#{this.date.ToString()}#{this.startTime.ToString()}#{this.endTime.ToString()}#{this.cost}#{this.status}";
         }
 
     }
