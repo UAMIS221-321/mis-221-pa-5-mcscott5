@@ -54,19 +54,21 @@ namespace mis_221_pa_5_mcscott5
 
         static void Route(string userInput)
         {
+            TrainersUtility tutil = new TrainersUtility();
             if (userInput == "1")
             {
                 System.Console.WriteLine("add");
-                TrainersUtility tutil = new TrainersUtility();
                 tutil.AddTrainer();
             }
             else if (userInput == "2")
             {
                 System.Console.WriteLine("delete");
+                tutil.DeleteTrainer();
             }
             else if (userInput == "3")
             {
                 System.Console.WriteLine("edit");
+                tutil.EditTrainer();
             }
 
         }

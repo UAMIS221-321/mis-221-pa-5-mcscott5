@@ -29,6 +29,84 @@ namespace mis_221_pa_5_mcscott5
             Save();
         }
 
+        public void DeleteTrainer()
+        {
+            System.Console.WriteLine("Please enter the ID of the trainer you want to delete: ");
+            int deleteID = int.Parse(Console.ReadLine());
+
+            while (!TrainerExists(deleteID))
+            {
+                System.Console.WriteLine("Trainer does not Exist!");
+                System.Console.WriteLine("Please enter the ID of the trainer you want to delete: ");
+                deleteID = int.Parse(Console.ReadLine());
+            }
+
+            foreach (Trainer t in Trainers)
+            {
+                if (t.GetId() == deleteID)
+                {
+                    Trainers.Remove(t);
+                    break;
+                }
+            }
+
+            Save();
+
+        }
+
+        public void EditTrainer()
+        {
+            System.Console.WriteLine("Please enter the ID of the trainer you want to delete: ");
+            int editID = int.Parse(Console.ReadLine());
+
+            while (!TrainerExists(editID))
+            {
+                System.Console.WriteLine("Trainer does not Exist!");
+                System.Console.WriteLine("Please enter the ID of the trainer you want to delete: ");
+                editID = int.Parse(Console.ReadLine());
+            }
+
+            System.Console.WriteLine("Please enter what you want to edit: ");
+            Console.WriteLine("1:   Name");
+            Console.WriteLine("2:   Mailing Address");
+            Console.WriteLine("3:   Email");
+            string menuOption = Console.ReadLine();
+
+
+
+            foreach (Trainer t in Trainers)
+            {
+                if (t.GetId() == editID)
+                {
+                    if (menuOption == "1")
+                    {
+                        System.Console.WriteLine("Please enter what you wish to change their name to: ");
+                        string newName = Console.ReadLine();
+                        t.SetName(newName);
+                        System.Console.WriteLine("Name has been changed to " + newName);
+                    }
+                    else if (menuOption == "2")
+                    {
+                        System.Console.WriteLine("Please enter what you wish to change their mailing address to: ");
+                        string newMail = Console.ReadLine();
+                        t.SetMailingAddress(newMail);
+                        System.Console.WriteLine("Mailing address has been changed to " + newMail);
+                    }
+                    else if (menuOption == "3")
+                    {
+                        System.Console.WriteLine("Please enter what you wish to change their email address to: ");
+                        string newEmail = Console.ReadLine();
+                        t.SetName(newEmail);
+                        System.Console.WriteLine("Email address has been changed to " + newEmail);
+                    }
+                    
+                    break;
+                }
+            }
+
+            Save();
+        }
+
         public void Save()
         {
             StreamWriter outFile = new StreamWriter("trainers.txt");
