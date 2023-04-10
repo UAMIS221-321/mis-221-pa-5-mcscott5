@@ -57,6 +57,8 @@ namespace mis_221_pa_5_mcscott5
             if (userInput == "1")
             {
                 System.Console.WriteLine("add");
+                TrainersUtility tutil = new TrainersUtility();
+                tutil.AddTrainer();
             }
             else if (userInput == "2")
             {

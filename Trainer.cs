@@ -2,7 +2,7 @@ namespace mis_221_pa_5_mcscott5
 {
     public class Trainer
     {
-        private string id;
+        private int id;
         private string name;
         private string mailingAddress;
         private string emailAddress;
@@ -10,18 +10,18 @@ namespace mis_221_pa_5_mcscott5
         public Trainer(){
 
         }
-        public Trainer(string id, string name, string mailingAddress, string emailAddress){
+        public Trainer(int id, string name, string mailingAddress, string emailAddress){
             this.id = id;
             this.name = name;
             this.mailingAddress = mailingAddress;
             this.emailAddress = emailAddress;
         }
 
-        public void SetId(string id){
+        public void SetId(int id){
             this.id = id;
         }
 
-        public string GetId(){
+        public int GetId(){
             return this.id;
         }
 
