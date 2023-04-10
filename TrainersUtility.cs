@@ -45,7 +45,7 @@ namespace mis_221_pa_5_mcscott5
             {
                 if (t.GetId() == deleteID)
                 {
-                    Trainers.Remove(t);
+                    t.SetStatus("Deleted");
                     break;
                 }
             }
@@ -56,13 +56,13 @@ namespace mis_221_pa_5_mcscott5
 
         public void EditTrainer()
         {
-            System.Console.WriteLine("Please enter the ID of the trainer you want to delete: ");
+            System.Console.WriteLine("Please enter the ID of the trainer you want to edit: ");
             int editID = int.Parse(Console.ReadLine());
 
             while (!TrainerExists(editID))
             {
                 System.Console.WriteLine("Trainer does not Exist!");
-                System.Console.WriteLine("Please enter the ID of the trainer you want to delete: ");
+                System.Console.WriteLine("Please enter the ID of the trainer you want to edit: ");
                 editID = int.Parse(Console.ReadLine());
             }
 
@@ -96,7 +96,7 @@ namespace mis_221_pa_5_mcscott5
                     {
                         System.Console.WriteLine("Please enter what you wish to change their email address to: ");
                         string newEmail = Console.ReadLine();
-                        t.SetName(newEmail);
+                        t.SetEmailAddress(newEmail);
                         System.Console.WriteLine("Email address has been changed to " + newEmail);
                     }
                     
@@ -124,7 +124,7 @@ namespace mis_221_pa_5_mcscott5
             while ((line = inFile.ReadLine()) != null)
             {
                 string[] temp = line.Split('#');
-                Trainer newTrainer = new Trainer(int.Parse(temp[0]), temp[1], temp[2], temp[3]);
+                Trainer newTrainer = new Trainer(int.Parse(temp[0]), temp[1], temp[2], temp[3], temp[4]);
                 Trainers.Add(newTrainer);
 
             }
@@ -140,7 +140,7 @@ namespace mis_221_pa_5_mcscott5
         {
             foreach (Trainer t in Trainers)
             {
-                if (t.GetId() == searchID)
+                if (t.GetId() == searchID && (t.GetStatus() == "Active"))
                 {
                     return true;
                 }
