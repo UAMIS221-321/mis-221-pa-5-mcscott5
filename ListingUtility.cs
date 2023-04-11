@@ -8,14 +8,30 @@ namespace mis_221_pa_5_mcscott5
         {
             System.Console.WriteLine("New Listing Information: ");
 
-            System.Console.WriteLine("Please enter a trainer name: ");
-            string newName = Console.ReadLine();
+            System.Console.WriteLine("Available Trainers: ");
+            foreach (Trainer t in TrainersUtility.Trainers)
+            {
+                if (t.GetStatus() == "Active")
+                    System.Console.WriteLine(t.GetId() + ":\t" + t.GetName());
+            }
 
-            while (!TrainerExists(newName))
+            System.Console.WriteLine("Please enter the id for the trainer you wish to add a listing for: ");
+            int findID = int.Parse(Console.ReadLine());
+
+            while (!TrainerExists(findID))
             {
                 System.Console.WriteLine("Trainer does not Exist!");
-                System.Console.WriteLine("Please enter a trainer name: ");
-                newName = Console.ReadLine();
+                System.Console.WriteLine("Please enter the id for the trainer you wish to add a listing for: ");
+                findID = int.Parse(Console.ReadLine());
+            }
+            string newName = "";
+            foreach (Trainer t in TrainersUtility.Trainers)
+            {
+                if (t.GetId() == findID)
+                {
+                    newName = t.GetName();
+                    break;
+                }
             }
 
 
@@ -164,14 +180,15 @@ namespace mis_221_pa_5_mcscott5
             foreach (Listing l in Listings)
             {
                 System.Console.WriteLine(l.ToString());
+                System.Console.WriteLine("");
             }
         }
 
-        public bool TrainerExists(string searchName)
+        public bool TrainerExists(int searchID)
         {
             foreach (Trainer t in TrainersUtility.Trainers)
             {
-                if (t.GetName() == searchName && (t.GetStatus() == "Active"))
+                if (t.GetId() == searchID && (t.GetStatus() == "Active"))
                 {
                     return true;
                 }

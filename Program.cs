@@ -6,6 +6,7 @@ ListingUtility.PopulateListings();
 MainTerminal start = new MainTerminal();
 start.mainMenu();
 
+
 // Trainer mike = new Trainer("12", "Mike Jones", "1401 Snow Hinton Dr", "mjones@gmail.com");
 // System.Console.WriteLine(mike.GetMailingAddress());
 

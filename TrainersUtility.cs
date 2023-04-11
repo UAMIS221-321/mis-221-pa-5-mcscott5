@@ -133,6 +133,7 @@ namespace mis_221_pa_5_mcscott5
             foreach (Trainer t in TrainersUtility.Trainers)
             {
                 System.Console.WriteLine(t.ToString());
+                System.Console.WriteLine("");
             }
         }
 
