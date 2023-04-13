@@ -1,6 +1,6 @@
 1842256#Madison Scott#pok#mscott5@crimson.ua.edu#Deleted
-6597602#Wagner Osborne#123 Apt#wosborne@gmail.com#Active
-5386238#Sandy Zheng#444 Brook Lane#szheng@crimson.ua.edu#Active
-5572678#Emma Isbell#Tusc Apt Complex#eisbell@ua.edu#Active
+6597602#Waggle Osborne#123 Apt#wosborne@gmail.com#Active
+5386238#Sandra Zheng#444 Brook Lane#szheng@crimson.ua.edu#Active
+5572678#Emma Isbell#Tusc Apt Complex#eisbell@ua.edu#Deleted
 7244984#Minnie mouse#Mouse Lane#mmouse@gmail.com#Active
 7177284#Mickey Mouse#mickmouse@gmail.com#clubhouse@tcss.net#Deleted

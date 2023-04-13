@@ -3,6 +3,7 @@ namespace mis_221_pa_5_mcscott5
     public class Listing
     {
         private int id;
+        private Trainer t;
         private string trainerName;
         private DateOnly date = new DateOnly();
         private TimeOnly startTime = new TimeOnly();
@@ -50,6 +51,14 @@ namespace mis_221_pa_5_mcscott5
             return this.trainerName;
         }
 
+        public void SetTrainer(Trainer t){
+            this.t = t;
+        }
+
+        public Trainer GetTrainer(){
+            return this.t;
+        }
+
         public void SetDate(string date){
             this.date = DateOnly.Parse(date);
         }
@@ -67,11 +76,11 @@ namespace mis_221_pa_5_mcscott5
         }
 
         public void SetEndTime(string time){
-            this.startTime = TimeOnly.Parse(time);
+            this.endTime = TimeOnly.Parse(time);
         }
 
         public string GetEndTime(){
-            return this.startTime.ToString();
+            return this.endTime.ToString();
         }
 
         public void SetCost(double cost){

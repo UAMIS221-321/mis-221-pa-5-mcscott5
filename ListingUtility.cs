@@ -7,7 +7,7 @@ namespace mis_221_pa_5_mcscott5
         public void AddListing()
         {
             System.Console.WriteLine("New Listing Information: ");
-
+            Listing l = new Listing();
             System.Console.WriteLine("Available Trainers: ");
             foreach (Trainer t in TrainersUtility.Trainers)
             {
@@ -29,7 +29,8 @@ namespace mis_221_pa_5_mcscott5
             {
                 if (t.GetId() == findID)
                 {
-                    newName = t.GetName();
+                    l.SetTrainer(t);
+                    l.SetTrainerName(t.GetName());
                     break;
                 }
             }
@@ -37,9 +38,11 @@ namespace mis_221_pa_5_mcscott5
 
             System.Console.WriteLine("Please enter a date: ");
             string newDate = Console.ReadLine();
+            l.SetDate(newDate);
 
             System.Console.WriteLine("Please enter a start time: ");
             string newStartTime = Console.ReadLine();
+            l.SetStartTime(newStartTime);
 
             System.Console.WriteLine("Please enter a duration: ");
             Console.WriteLine("1:   30 minutes");
@@ -60,9 +63,11 @@ namespace mis_221_pa_5_mcscott5
                 newEndTime = (TimeOnly.Parse(newStartTime).AddHours(2).ToString());
             }
 
+            l.SetEndTime(newEndTime);
+
             System.Console.WriteLine("Please enter a cost: ");
             string newCost = Console.ReadLine();
-
+            l.SetCost(double.Parse(newCost));
 
             Random rnd = new Random();
             int newID = rnd.Next(10000000);
@@ -71,8 +76,11 @@ namespace mis_221_pa_5_mcscott5
                 newID = rnd.Next();
             }
 
-            Listing newListing = new Listing(newID, newName, newDate, newStartTime, newEndTime, double.Parse(newCost), "Open");
-            Listings.Add(newListing);
+            l.SetId(newID);
+            l.SetListingStatus("Open");
+
+            //Listing newListing = new Listing(newID, newName, newDate, newStartTime, newEndTime, double.Parse(newCost), "Open");
+            Listings.Add(l);
             Save();
         }
 
