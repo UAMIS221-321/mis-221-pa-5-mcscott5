@@ -54,9 +54,11 @@ namespace mis_221_pa_5_mcscott5
 
         static void Route(string userInput)
         {
+            BookingUtility bUtil = new BookingUtility();
             if (userInput == "1")
             {
                 System.Console.WriteLine("view session");
+                bUtil.ViewAvailableTrainingSessionsByTrainer();
             }
             else if (userInput == "2")
             {
