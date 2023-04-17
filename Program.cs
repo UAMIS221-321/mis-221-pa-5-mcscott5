@@ -2,6 +2,7 @@
 
 TrainersUtility.PopulateTrainers();
 ListingUtility.PopulateListings();
+BookingUtility.PopulateBookings();
 
 MainTerminal start = new MainTerminal();
 start.mainMenu();

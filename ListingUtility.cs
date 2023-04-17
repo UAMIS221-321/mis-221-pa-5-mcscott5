@@ -204,7 +204,7 @@ namespace mis_221_pa_5_mcscott5
             return false;
         }
 
-        public bool ListingExists(int searchID)
+        public static bool ListingExists(int searchID)
         {
             foreach (Listing l in Listings)
             {

@@ -63,6 +63,7 @@ namespace mis_221_pa_5_mcscott5
             else if (userInput == "2")
             {
                 System.Console.WriteLine("book");
+                bUtil.BookSession();
             }
             else if (userInput == "3")
             {
