@@ -64,15 +64,47 @@ namespace mis_221_pa_5_mcscott5
 
                     System.Console.WriteLine("Please enter a customer email: ");
                     string customerEmail = Console.ReadLine();
-                    
 
-                    //TO-DO: ADD TRAINER ID FIELD TO LISTINGS
-                    Booking newBooking = new Booking(newID, customerName, customerEmail, l.GetDate(), l.GetTrainerId(), l.GeTrainerName(), l.GetCost());
+                    Booking newBooking = new Booking(newID, customerName, customerEmail, l.GetDate(), l.GetTrainerId(), l.GeTrainerName(), l.GetCost(), "Booked");
                     Bookings.Add(newBooking);
                     Save();
                     break;
                 }
             }
+        }
+
+        public void UpdateBookingStatus()
+        {
+            System.Console.WriteLine("Please enter ID of of the booking whose status you wish to change: ");
+            int searchID = int.Parse(Console.ReadLine());
+
+            while (!BookingExists(searchID))
+            {
+                System.Console.WriteLine("Booking does not exist!");
+                System.Console.WriteLine("Please enter ID of of the booking whose status you wish to change: ");
+                searchID = int.Parse(Console.ReadLine());
+            }
+
+            System.Console.WriteLine("What would you like to change the status to?");
+            System.Console.WriteLine("1. Completed");
+            System.Console.WriteLine("2. Cancelled");
+            foreach (Booking b in Bookings)
+            {
+                if (searchID == b.GetSessionId())
+                {
+                    string option = Console.ReadLine();
+                    if (option == "1")
+                    {
+                        b.SetStatus("Completed");
+                    }
+                    else if (option == "2")
+                    {
+                        b.SetStatus("Cancelled");
+                    }
+                }
+            }
+            Save();
+
         }
 
         public static bool BookingExists(int searchID)
@@ -104,7 +136,7 @@ namespace mis_221_pa_5_mcscott5
             while ((line = inFile.ReadLine()) != null)
             {
                 string[] temp = line.Split('#');
-                Booking newBooking = new Booking(int.Parse(temp[0]), temp[1], temp[2], temp[3], int.Parse(temp[4]), temp[5], double.Parse(temp[6]));
+                Booking newBooking = new Booking(int.Parse(temp[0]), temp[1], temp[2], temp[3], int.Parse(temp[4]), temp[5], double.Parse(temp[6]), temp[7]);
                 Bookings.Add(newBooking);
 
             }

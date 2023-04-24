@@ -16,7 +16,7 @@ namespace mis_221_pa_5_mcscott5
 
         }
 
-        public Booking(int sessionId, string customerName, string customerEmail, string trainingDate, int trainerId, string trainerName, double cost){
+        public Booking(int sessionId, string customerName, string customerEmail, string trainingDate, int trainerId, string trainerName, double cost, string status){
             this.sessionId = sessionId;
             this.customerName = customerName;
             this.customerEmail = customerEmail;
@@ -25,7 +25,7 @@ namespace mis_221_pa_5_mcscott5
             this.trainerId = trainerId;
             this.trainerName = trainerName;
             this.cost = cost;
-            this.status = "Booked";
+            this.status = status;
         }
 
         public void SetSessionId(int id){

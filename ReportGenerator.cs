@@ -14,48 +14,68 @@ namespace mis_221_pa_5_mcscott5
 
         public void PrintHistoricalRevenueReports()
         {
-            for (int i = 0; i < ListingUtility.Listings.Count - 1; i++)
+            List<Booking> CompletedBookings = new List<Booking>();
+            foreach(Booking b in BookingUtility.Bookings){
+                if (b.GetStatus() == "Completed"){
+                    CompletedBookings.Add(b);
+                }
+            }
+
+            for (int i = 0; i < CompletedBookings.Count - 1; i++)
             {
                 int minIndex = i;
-                for (int j = i + 1; j < ListingUtility.Listings.Count; j++)
+                for (int j = i + 1; j < CompletedBookings.Count; j++)
                 {
-                    if (DateOnly.Parse(ListingUtility.Listings[j].GetDate()).Year < DateOnly.Parse(ListingUtility.Listings[minIndex].GetDate()).Year || (DateOnly.Parse(ListingUtility.Listings[j].GetDate()).Year == DateOnly.Parse(ListingUtility.Listings[minIndex].GetDate()).Year && DateOnly.Parse(ListingUtility.Listings[j].GetDate()).Month < DateOnly.Parse(ListingUtility.Listings[minIndex].GetDate()).Month))
+                    if (DateOnly.Parse(CompletedBookings[j].GetDate()).Year < DateOnly.Parse(CompletedBookings[minIndex].GetDate()).Year || (DateOnly.Parse(CompletedBookings[j].GetDate()).Year == DateOnly.Parse(CompletedBookings[minIndex].GetDate()).Year && DateOnly.Parse(CompletedBookings[j].GetDate()).Month < DateOnly.Parse(CompletedBookings[minIndex].GetDate()).Month))
                     {
                         minIndex = j;
                     }
                 }
                 if (minIndex != i)
                 {
-                    Swap(minIndex, i, ListingUtility.Listings);
+                    Swap(minIndex, i, CompletedBookings);
                 }
             }
 
-            foreach (Listing l in ListingUtility.Listings)
+            foreach (Booking b in CompletedBookings)
             {
-                System.Console.WriteLine(l.ToString());
+                System.Console.WriteLine(b.ToString());
             }
 
-            int currMonth = DateOnly.Parse(ListingUtility.Listings[0].GetDate()).Month;
-            int currYear = DateOnly.Parse(ListingUtility.Listings[0].GetDate()).Year;
-            double monthlyTotal = ListingUtility.Listings[0].GetCost();
-            double yearlyTotal = ListingUtility.Listings[0].GetCost();
+            int currMonth;
+            int currYear;
+            double monthlyTotal;
+            double yearlyTotal;
 
-            for (int i = 1; i < ListingUtility.Listings.Count; i++)
+            try {
+            currMonth = DateOnly.Parse(CompletedBookings[0].GetDate()).Month;
+            currYear = DateOnly.Parse(CompletedBookings[0].GetDate()).Year;
+            monthlyTotal = CompletedBookings[0].GetCost();
+            yearlyTotal = CompletedBookings[0].GetCost();
+            } catch {
+                System.Console.WriteLine("No completed bookings!");
+                return;
+            }
+
+            for (int i = 1; i < CompletedBookings.Count; i++)
             {
-                    if ((DateOnly.Parse(ListingUtility.Listings[i].GetDate()).Month == currMonth) && (DateOnly.Parse(ListingUtility.Listings[i].GetDate()).Year == currYear))
-                    {
-                        monthlyTotal += ListingUtility.Listings[i].GetCost();
-                    } else
-                    {
-                        ProcessBreakMonth(ref currMonth, ref monthlyTotal, ListingUtility.Listings[i]);
-                    }
+                if ((DateOnly.Parse(CompletedBookings[i].GetDate()).Month == currMonth) && (DateOnly.Parse(CompletedBookings[i].GetDate()).Year == currYear))
+                {
+                    monthlyTotal += CompletedBookings[i].GetCost();
+                }
+                else
+                {
+                    ProcessBreakMonth(ref currMonth, ref monthlyTotal, CompletedBookings[i]);
+                }
 
-                    if ((DateOnly.Parse(ListingUtility.Listings[i].GetDate()).Year == currYear)){
-                        yearlyTotal += ListingUtility.Listings[i].GetCost();
-                    }
-                    else{
-                        ProcessBreakYear(ref currYear, ref yearlyTotal, ListingUtility.Listings[i]);
-                    }
+                if ((DateOnly.Parse(CompletedBookings[i].GetDate()).Year == currYear))
+                {
+                    yearlyTotal += CompletedBookings[i].GetCost();
+                }
+                else
+                {
+                    ProcessBreakYear(ref currYear, ref yearlyTotal, CompletedBookings[i]);
+                }
             }
 
             ProcessBreakMonth2(ref currMonth, ref monthlyTotal);
@@ -63,22 +83,26 @@ namespace mis_221_pa_5_mcscott5
 
         }
 
-        public void ProcessBreakMonth(ref int currMonth, ref double monthlyTotal, Listing nextListing)
+        public void ProcessBreakMonth(ref int currMonth, ref double monthlyTotal, Booking nextBooking)
         {
-            System.Console.WriteLine(currMonth + "\t" + monthlyTotal);
-            currMonth = DateOnly.Parse(nextListing.GetDate()).Month;
-            monthlyTotal = nextListing.GetCost();
+            DateTime date = new DateTime(2020, currMonth, 1);
+            string monthName = date.ToString("MMMM");
+            System.Console.WriteLine(monthName + "\t" + monthlyTotal);
+            currMonth = DateOnly.Parse(nextBooking.GetDate()).Month;
+            monthlyTotal = nextBooking.GetCost();
         }
-        public void ProcessBreakYear(ref int currYear, ref double yearlyTotal, Listing nextListing)
+        public void ProcessBreakYear(ref int currYear, ref double yearlyTotal, Booking nextBooking)
         {
             System.Console.WriteLine(currYear + "\t" + yearlyTotal);
-            currYear = DateOnly.Parse(nextListing.GetDate()).Year;
-            yearlyTotal = nextListing.GetCost();
+            currYear = DateOnly.Parse(nextBooking.GetDate()).Year;
+            yearlyTotal = nextBooking.GetCost();
         }
 
         public void ProcessBreakMonth2(ref int currMonth, ref double monthlyTotal)
         {
-            System.Console.WriteLine(currMonth + "\t" + monthlyTotal);
+            DateTime date = new DateTime(2020, currMonth, 1);
+            string monthName = date.ToString("MMMM");
+            System.Console.WriteLine(monthName + "\t" + monthlyTotal);
         }
 
         public void ProcessBreakYear2(ref int currYear, ref double yearlyTotal)
@@ -86,11 +110,11 @@ namespace mis_221_pa_5_mcscott5
             System.Console.WriteLine(currYear + "\t" + yearlyTotal);
         }
 
-        public void Swap(int x, int y, List<Listing> listings)
+        public void Swap(int x, int y, List<Booking> bookings)
         {
-            Listing temp = listings[x];
-            listings[x] = listings[y];
-            listings[y] = temp;
+            Booking temp = bookings[x];
+            bookings[x] = bookings[y];
+            bookings[y] = temp;
         }
 
 

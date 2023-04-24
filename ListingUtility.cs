@@ -50,6 +50,7 @@ namespace mis_221_pa_5_mcscott5
             Console.WriteLine("3:   2 hours");
             string newDuration = Console.ReadLine();
             string newEndTime = "";
+            bool validTime = false;
             if (newDuration == "1")
             {
                 newEndTime = (TimeOnly.Parse(newStartTime).AddMinutes(30).ToString());
@@ -162,6 +163,7 @@ namespace mis_221_pa_5_mcscott5
         //     Save();
         // }
 
+        
         public void Save()
         {
             StreamWriter outFile = new StreamWriter("listings.txt");
