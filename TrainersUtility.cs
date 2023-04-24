@@ -120,13 +120,13 @@ namespace mis_221_pa_5_mcscott5
         public static void PopulateTrainers()
         {
             StreamReader inFile = new StreamReader("trainers.txt");
-            string line;
-            while ((line = inFile.ReadLine()) != null)
+            string line = inFile.ReadLine();
+            while ((line != null))
             {
                 string[] temp = line.Split('#');
                 Trainer newTrainer = new Trainer(int.Parse(temp[0]), temp[1], temp[2], temp[3], temp[4]);
                 Trainers.Add(newTrainer);
-
+                line = inFile.ReadLine();
             }
 
             inFile.Close();

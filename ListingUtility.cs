@@ -29,7 +29,7 @@ namespace mis_221_pa_5_mcscott5
             {
                 if (t.GetId() == findID)
                 {
-                    l.SetTrainer(t);
+                    l.SetTrainerId(t.GetId());
                     l.SetTrainerName(t.GetName());
                     break;
                 }
@@ -179,7 +179,7 @@ namespace mis_221_pa_5_mcscott5
             while ((line = inFile.ReadLine()) != null)
             {
                 string[] temp = line.Split('#');
-                Listing newListing = new Listing(int.Parse(temp[0]), temp[1], temp[2], temp[3], temp[4], double.Parse(temp[5]), temp[6]);
+                Listing newListing = new Listing(int.Parse(temp[0]), int.Parse(temp[1]), temp[2], temp[3], temp[4], temp[5], double.Parse(temp[6]), temp[7]);
                 Listings.Add(newListing);
 
             }

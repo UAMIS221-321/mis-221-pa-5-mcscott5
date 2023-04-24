@@ -67,7 +67,7 @@ namespace mis_221_pa_5_mcscott5
                     
 
                     //TO-DO: ADD TRAINER ID FIELD TO LISTINGS
-                    Booking newBooking = new Booking(newID, customerName, customerEmail, l.GetDate(), l.GeTrainerName(), l.GetCost());
+                    Booking newBooking = new Booking(newID, customerName, customerEmail, l.GetDate(), l.GetTrainerId(), l.GeTrainerName(), l.GetCost());
                     Bookings.Add(newBooking);
                     Save();
                     break;

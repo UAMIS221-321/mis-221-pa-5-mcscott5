@@ -3,7 +3,7 @@ namespace mis_221_pa_5_mcscott5
     public class Listing
     {
         private int id;
-        private Trainer t;
+        private int trainerId;
         private string trainerName;
         private DateOnly date = new DateOnly();
         private TimeOnly startTime = new TimeOnly();
@@ -16,8 +16,9 @@ namespace mis_221_pa_5_mcscott5
 
         }
 
-        public Listing(int id, string trainerName, string date, string startTime, double cost, string status){
+        public Listing(int id, int trainerId, string trainerName, string date, string startTime, double cost, string status){
             this.id = id;
+            this.trainerId = trainerId;
             this.trainerName = trainerName;
             this.date = DateOnly.Parse(date);
             this.startTime = TimeOnly.Parse(startTime);
@@ -25,8 +26,9 @@ namespace mis_221_pa_5_mcscott5
             this.status = status;
         }
 
-        public Listing(int id, string trainerName, string date, string startTime, string endTime, double cost, string status){
+        public Listing(int id, int trainerId, string trainerName, string date, string startTime, string endTime, double cost, string status){
             this.id = id;
+            this.trainerId = trainerId;
             this.trainerName = trainerName;
             this.date = DateOnly.Parse(date);
             this.startTime = TimeOnly.Parse(startTime);
@@ -51,12 +53,12 @@ namespace mis_221_pa_5_mcscott5
             return this.trainerName;
         }
 
-        public void SetTrainer(Trainer t){
-            this.t = t;
+        public void SetTrainerId(int tID){
+            this.trainerId = tID;
         }
 
-        public Trainer GetTrainer(){
-            return this.t;
+        public int GetTrainerId(){
+            return this.trainerId;
         }
 
         public void SetDate(string date){
@@ -101,12 +103,12 @@ namespace mis_221_pa_5_mcscott5
 
         public override string ToString()
         {
-            return $"Listing ID: {this.id}\nTrainer Name: {this.trainerName}\nDate: {this.date.ToString()}\nStart Time: {this.startTime.ToString()}\nEnd Time: {this.endTime.ToString()}\nCost: {this.cost}\nStatus: {this.status}";
+            return $"Listing ID: {this.id}\nTrainer ID: {this.trainerId}\nTrainer Name: {this.trainerName}\nDate: {this.date.ToString()}\nStart Time: {this.startTime.ToString()}\nEnd Time: {this.endTime.ToString()}\nCost: {this.cost}\nStatus: {this.status}";
         }
 
         public string ToFile()
         {
-            return $"{this.id}#{this.trainerName}#{this.date.ToString()}#{this.startTime.ToString()}#{this.endTime.ToString()}#{this.cost}#{this.status}";
+            return $"{this.id}#{this.trainerId}#{this.trainerName}#{this.date.ToString()}#{this.startTime.ToString()}#{this.endTime.ToString()}#{this.cost}#{this.status}";
         }
 
     }
