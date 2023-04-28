@@ -52,6 +52,7 @@ namespace mis_221_pa_5_mcscott5
             {
                 if (l.GetId() == searchID)
                 {
+                    l.SetListingStatus("Taken");
                     Random rnd = new Random();
                     int newID = rnd.Next(10000000);
                     while (BookingExists(newID))

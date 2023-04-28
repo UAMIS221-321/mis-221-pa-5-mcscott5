@@ -85,83 +85,117 @@ namespace mis_221_pa_5_mcscott5
             Save();
         }
 
-        // public void DeleteTrainer()
-        // {
-        //     System.Console.WriteLine("Please enter the ID of the trainer you want to delete: ");
-        //     int deleteID = int.Parse(Console.ReadLine());
+        public void DeleteListing()
+        {
+            foreach(Listing l in Listings){
+                    System.Console.WriteLine(l.ToString());
+            }
 
-        //     while (!TrainerExists(deleteID))
-        //     {
-        //         System.Console.WriteLine("Trainer does not Exist!");
-        //         System.Console.WriteLine("Please enter the ID of the trainer you want to delete: ");
-        //         deleteID = int.Parse(Console.ReadLine());
-        //     }
+            System.Console.WriteLine("Please enter the ID of the Listing you want to delete: ");
+            int deleteID = int.Parse(Console.ReadLine());
 
-        //     foreach (Trainer t in Trainers)
-        //     {
-        //         if (t.GetId() == deleteID)
-        //         {
-        //             t.SetStatus("Deleted");
-        //             break;
-        //         }
-        //     }
+            while (!ListingExists(deleteID))
+            {
+                System.Console.WriteLine("Listing does not Exist!");
+                System.Console.WriteLine("Please enter the ID of the Listing you want to delete: ");
+                deleteID = int.Parse(Console.ReadLine());
+            }
 
-        //     Save();
+            foreach (Listing l in Listings)
+            {
+                if (l.GetId() == deleteID)
+                {
+                    l.SetListingStatus("Deleted");
+                    break;
+                    
+                }
+            }
+            Save();
 
-        // }
+        }
 
-        // public void EditTrainer()
-        // {
-        //     System.Console.WriteLine("Please enter the ID of the trainer you want to edit: ");
-        //     int editID = int.Parse(Console.ReadLine());
+        public void EditListing()
+        {
+            System.Console.WriteLine("Please enter the ID of the listing you want to edit: ");
+            int editID = int.Parse(Console.ReadLine());
 
-        //     while (!TrainerExists(editID))
-        //     {
-        //         System.Console.WriteLine("Trainer does not Exist!");
-        //         System.Console.WriteLine("Please enter the ID of the trainer you want to edit: ");
-        //         editID = int.Parse(Console.ReadLine());
-        //     }
+            while (!ListingExists(editID))
+            {
+                System.Console.WriteLine("Listing does not Exist!");
+                System.Console.WriteLine("Please enter the ID of the listing you want to edit: ");
+                editID = int.Parse(Console.ReadLine());
+            }
 
-        //     System.Console.WriteLine("Please enter what you want to edit: ");
-        //     Console.WriteLine("1:   Name");
-        //     Console.WriteLine("2:   Mailing Address");
-        //     Console.WriteLine("3:   Email");
-        //     string menuOption = Console.ReadLine();
+            System.Console.WriteLine("Please enter what you want to edit: ");
+            Console.WriteLine("1:   Trainer Id");
+            Console.WriteLine("2:   Name");
+            Console.WriteLine("3:   Date");
+            Console.WriteLine("4:   Start Time");
+            Console.WriteLine("5:   End Time");
+            Console.WriteLine("6:   Cost");
+            Console.WriteLine("7:   Status");
+            string menuOption = Console.ReadLine();
 
+            foreach (Listing l in Listings)
+            {
+                if (l.GetId() == editID)
+                {
+                    if (menuOption == "1")
+                    {
+                        System.Console.WriteLine("Please enter what you wish to change their name to: ");
+                        string newName = Console.ReadLine();
+                        t.SetName(newName);
+                        System.Console.WriteLine("Name has been changed to " + newName);
+                    }
+                    else if (menuOption == "2")
+                    {
+                        System.Console.WriteLine("Please enter what you wish to change their mailing address to: ");
+                        string newMail = Console.ReadLine();
+                        t.SetMailingAddress(newMail);
+                        System.Console.WriteLine("Mailing address has been changed to " + newMail);
+                    }
+                    else if (menuOption == "3")
+                    {
+                        System.Console.WriteLine("Please enter what you wish to change their email address to: ");
+                        string newEmail = Console.ReadLine();
+                        t.SetEmailAddress(newEmail);
+                        System.Console.WriteLine("Email address has been changed to " + newEmail);
+                    }
+                    else if (menuOption == "4")
+                    {
+                        System.Console.WriteLine("Please enter what you wish to change their email address to: ");
+                        string newEmail = Console.ReadLine();
+                        t.SetEmailAddress(newEmail);
+                        System.Console.WriteLine("Email address has been changed to " + newEmail);
+                    }
+                    else if (menuOption == "5")
+                    {
+                        System.Console.WriteLine("Please enter what you wish to change their email address to: ");
+                        string newEmail = Console.ReadLine();
+                        t.SetEmailAddress(newEmail);
+                        System.Console.WriteLine("Email address has been changed to " + newEmail);
+                    }
+                    else if (menuOption == "6")
+                    {
+                        System.Console.WriteLine("Please enter what you wish to change their email address to: ");
+                        string newEmail = Console.ReadLine();
+                        t.SetEmailAddress(newEmail);
+                        System.Console.WriteLine("Email address has been changed to " + newEmail);
+                    }
+                    else if (menuOption == "7")
+                    {
+                        System.Console.WriteLine("Please enter what you wish to change their email address to: ");
+                        string newEmail = Console.ReadLine();
+                        t.SetEmailAddress(newEmail);
+                        System.Console.WriteLine("Email address has been changed to " + newEmail);
+                    }
 
+                    break;
+                }
+            }
 
-        //     foreach (Trainer t in Trainers)
-        //     {
-        //         if (t.GetId() == editID)
-        //         {
-        //             if (menuOption == "1")
-        //             {
-        //                 System.Console.WriteLine("Please enter what you wish to change their name to: ");
-        //                 string newName = Console.ReadLine();
-        //                 t.SetName(newName);
-        //                 System.Console.WriteLine("Name has been changed to " + newName);
-        //             }
-        //             else if (menuOption == "2")
-        //             {
-        //                 System.Console.WriteLine("Please enter what you wish to change their mailing address to: ");
-        //                 string newMail = Console.ReadLine();
-        //                 t.SetMailingAddress(newMail);
-        //                 System.Console.WriteLine("Mailing address has been changed to " + newMail);
-        //             }
-        //             else if (menuOption == "3")
-        //             {
-        //                 System.Console.WriteLine("Please enter what you wish to change their email address to: ");
-        //                 string newEmail = Console.ReadLine();
-        //                 t.SetEmailAddress(newEmail);
-        //                 System.Console.WriteLine("Email address has been changed to " + newEmail);
-        //             }
-
-        //             break;
-        //         }
-        //     }
-
-        //     Save();
-        // }
+            Save();
+        }
 
         
         public void Save()
@@ -217,5 +251,7 @@ namespace mis_221_pa_5_mcscott5
             }
             return false;
         }
+
+        
     }
 }
