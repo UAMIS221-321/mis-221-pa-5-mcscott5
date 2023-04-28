@@ -4,19 +4,50 @@ namespace mis_221_pa_5_mcscott5
     {
         public void PrintIndividualCustomerReport()
         {
+            List<Booking> CompletedBookings = new List<Booking>();
+            foreach (Booking b in BookingUtility.Bookings)
+            {
+                if (b.GetStatus() == "Completed")
+                {
+                    CompletedBookings.Add(b);
+                }
+            }
 
+            System.Console.WriteLine("Please enter a customer email address: ");
+            string inputEmail = "";
+           
+            inputEmail = Console.ReadLine();
+            
+                foreach (Booking b in CompletedBookings)
+                {
+                    if (b.GetCustomerEmail().CompareTo(inputEmail) == 0)
+                    {
+                        System.Console.WriteLine(b.ToString());
+                    }
+                }
         }
 
         public void PrintHistoricalCustomerReports()
         {
+            //Completed or all?
+            List<Booking> CompletedBookings = new List<Booking>();
+            foreach (Booking b in BookingUtility.Bookings)
+            {
+                if (b.GetStatus() == "Completed")
+                {
+                    CompletedBookings.Add(b);
+                }
+            }
 
         }
 
         public void PrintHistoricalRevenueReports()
         {
             List<Booking> CompletedBookings = new List<Booking>();
-            foreach(Booking b in BookingUtility.Bookings){
-                if (b.GetStatus() == "Completed"){
+            foreach (Booking b in BookingUtility.Bookings)
+            {
+                if (b.GetStatus() == "Completed")
+                {
                     CompletedBookings.Add(b);
                 }
             }
@@ -47,12 +78,15 @@ namespace mis_221_pa_5_mcscott5
             double monthlyTotal;
             double yearlyTotal;
 
-            try {
-            currMonth = DateOnly.Parse(CompletedBookings[0].GetDate()).Month;
-            currYear = DateOnly.Parse(CompletedBookings[0].GetDate()).Year;
-            monthlyTotal = CompletedBookings[0].GetCost();
-            yearlyTotal = CompletedBookings[0].GetCost();
-            } catch {
+            try
+            {
+                currMonth = DateOnly.Parse(CompletedBookings[0].GetDate()).Month;
+                currYear = DateOnly.Parse(CompletedBookings[0].GetDate()).Year;
+                monthlyTotal = CompletedBookings[0].GetCost();
+                yearlyTotal = CompletedBookings[0].GetCost();
+            }
+            catch
+            {
                 System.Console.WriteLine("No completed bookings!");
                 return;
             }

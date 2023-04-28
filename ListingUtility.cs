@@ -87,8 +87,9 @@ namespace mis_221_pa_5_mcscott5
 
         public void DeleteListing()
         {
-            foreach(Listing l in Listings){
-                    System.Console.WriteLine(l.ToString());
+            foreach (Listing l in Listings)
+            {
+                System.Console.WriteLine(l.ToString());
             }
 
             System.Console.WriteLine("Please enter the ID of the Listing you want to delete: ");
@@ -107,7 +108,7 @@ namespace mis_221_pa_5_mcscott5
                 {
                     l.SetListingStatus("Deleted");
                     break;
-                    
+
                 }
             }
             Save();
@@ -126,12 +127,15 @@ namespace mis_221_pa_5_mcscott5
                 editID = int.Parse(Console.ReadLine());
             }
 
+            //Trainer Id and Name to be edited?
+            //both at same time?
+
             System.Console.WriteLine("Please enter what you want to edit: ");
             Console.WriteLine("1:   Trainer Id");
             Console.WriteLine("2:   Name");
             Console.WriteLine("3:   Date");
             Console.WriteLine("4:   Start Time");
-            Console.WriteLine("5:   End Time");
+            //Console.WriteLine("5:   End Time");
             Console.WriteLine("6:   Cost");
             Console.WriteLine("7:   Status");
             string menuOption = Console.ReadLine();
@@ -144,50 +148,79 @@ namespace mis_221_pa_5_mcscott5
                     {
                         System.Console.WriteLine("Please enter what you wish to change their name to: ");
                         string newName = Console.ReadLine();
-                        t.SetName(newName);
+                        //t.SetName(newName);
                         System.Console.WriteLine("Name has been changed to " + newName);
                     }
                     else if (menuOption == "2")
                     {
                         System.Console.WriteLine("Please enter what you wish to change their mailing address to: ");
                         string newMail = Console.ReadLine();
-                        t.SetMailingAddress(newMail);
+                        //t.SetMailingAddress(newMail);
                         System.Console.WriteLine("Mailing address has been changed to " + newMail);
                     }
                     else if (menuOption == "3")
                     {
                         System.Console.WriteLine("Please enter what you wish to change their email address to: ");
                         string newEmail = Console.ReadLine();
-                        t.SetEmailAddress(newEmail);
+                        //t.SetEmailAddress(newEmail);
                         System.Console.WriteLine("Email address has been changed to " + newEmail);
                     }
                     else if (menuOption == "4")
                     {
-                        System.Console.WriteLine("Please enter what you wish to change their email address to: ");
-                        string newEmail = Console.ReadLine();
-                        t.SetEmailAddress(newEmail);
-                        System.Console.WriteLine("Email address has been changed to " + newEmail);
+                        System.Console.WriteLine("Please enter what you wish to change the listing date to: ");
+                        string newDate = Console.ReadLine();
+                        l.SetDate(newDate);
+                        System.Console.WriteLine("Listing Date has been changed to " + newDate);
                     }
                     else if (menuOption == "5")
                     {
-                        System.Console.WriteLine("Please enter what you wish to change their email address to: ");
-                        string newEmail = Console.ReadLine();
-                        t.SetEmailAddress(newEmail);
-                        System.Console.WriteLine("Email address has been changed to " + newEmail);
+                        System.Console.WriteLine("Please enter what you wish to change the listing start time to: ");
+                        string newStartTime = Console.ReadLine();
+                        l.SetStartTime(newStartTime);
+
+                        System.Console.WriteLine("Please enter a duration: ");
+                        Console.WriteLine("1:   30 minutes");
+                        Console.WriteLine("2:   1 hour");
+                        Console.WriteLine("3:   2 hours");
+                        string newDuration = Console.ReadLine();
+                        string newEndTime = "";
+                        
+                        if (newDuration == "1")
+                        {
+                            newEndTime = (TimeOnly.Parse(newStartTime).AddMinutes(30).ToString());
+                        }
+                        else if (newDuration == "2")
+                        {
+                            newEndTime = (TimeOnly.Parse(newStartTime).AddHours(1).ToString());
+                        }
+                        else if (newDuration == "3")
+                        {
+                            newEndTime = (TimeOnly.Parse(newStartTime).AddHours(2).ToString());
+                        }
+
+                        l.SetEndTime(newEndTime);
+
+
+                        System.Console.WriteLine("Listing time has been changed to " + newStartTime + "-" + newEndTime);
                     }
                     else if (menuOption == "6")
                     {
-                        System.Console.WriteLine("Please enter what you wish to change their email address to: ");
-                        string newEmail = Console.ReadLine();
-                        t.SetEmailAddress(newEmail);
-                        System.Console.WriteLine("Email address has been changed to " + newEmail);
+                        System.Console.WriteLine("Please enter what you wish to change the listing cost to: ");
+                        double newCost = double.Parse(Console.ReadLine());
+                        l.SetCost(newCost);
+                        System.Console.WriteLine("Cost has been changed to " + newCost);
                     }
                     else if (menuOption == "7")
                     {
-                        System.Console.WriteLine("Please enter what you wish to change their email address to: ");
-                        string newEmail = Console.ReadLine();
-                        t.SetEmailAddress(newEmail);
-                        System.Console.WriteLine("Email address has been changed to " + newEmail);
+                        System.Console.WriteLine("Please enter what you wish to change the listing status to: ");
+                        string newStatus = Console.ReadLine();
+                        l.SetListingStatus(newStatus);
+                        System.Console.WriteLine("Listing status has been changed to " + newStatus);
+                    }
+                    else
+                    {
+                        System.Console.WriteLine("Invalid Option");
+                        return;
                     }
 
                     break;
@@ -197,7 +230,7 @@ namespace mis_221_pa_5_mcscott5
             Save();
         }
 
-        
+
         public void Save()
         {
             StreamWriter outFile = new StreamWriter("listings.txt");
@@ -252,6 +285,6 @@ namespace mis_221_pa_5_mcscott5
             return false;
         }
 
-        
+
     }
 }

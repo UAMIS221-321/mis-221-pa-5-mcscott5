@@ -58,6 +58,7 @@ namespace mis_221_pa_5_mcscott5
             if (userInput == "1")
             {
                 System.Console.WriteLine("individual customer");
+                rGen.PrintIndividualCustomerReport();
             }
             else if (userInput == "2")
             {
