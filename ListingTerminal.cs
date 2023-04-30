@@ -63,10 +63,12 @@ namespace mis_221_pa_5_mcscott5
             else if (userInput == "2")
             {
                 System.Console.WriteLine("delete");
+                lUtil.DeleteListing();
             }
             else if (userInput == "3")
             {
                 System.Console.WriteLine("edit");
+                lUtil.EditListing();
             }
 
         }

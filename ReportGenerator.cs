@@ -39,6 +39,70 @@ namespace mis_221_pa_5_mcscott5
                 }
             }
 
+            for (int i = 0; i < CompletedBookings.Count - 1; i++)
+            {
+                int minIndex = i;
+                for (int j = i + 1; j < CompletedBookings.Count; j++)
+                {
+                    if ((CompletedBookings[j].GetCustomerName().CompareTo(CompletedBookings[minIndex].GetCustomerName()) < 0) || (CompletedBookings[j].GetCustomerName().CompareTo(CompletedBookings[minIndex].GetCustomerName()) == 0) && DateOnly.Parse(CompletedBookings[j].GetDate()).CompareTo(DateOnly.Parse(CompletedBookings[minIndex].GetDate())) < 0)
+                    {
+                        minIndex = j;
+                    }
+                }
+                if (minIndex != i)
+                {
+                    Swap(minIndex, i, CompletedBookings);
+                }
+            }
+
+            foreach (Booking b in CompletedBookings)
+            {
+                System.Console.WriteLine(b.ToString());
+            }
+
+            string currCustomer;
+            int sessionCount;
+
+            try
+            {
+                currCustomer = CompletedBookings[0].GetCustomerName();
+                sessionCount = 1;
+            }
+            catch
+            {
+                System.Console.WriteLine("No completed bookings!");
+                return;
+            }
+
+            //System.Console.WriteLine(CompletedBookings[0].ToString());
+
+            for (int i = 1; i < CompletedBookings.Count; i++)
+            {
+                //System.Console.WriteLine(CompletedBookings[i].ToString());
+                if (CompletedBookings[i].GetCustomerName().CompareTo(currCustomer) == 0)
+                {
+                    //System.Console.WriteLine(CompletedBookings[i].ToString());
+                    sessionCount++;
+                }
+                else
+                {
+                    ProcessBreakCustomer(ref currCustomer, ref sessionCount, CompletedBookings[i]);
+                }
+            }
+
+            ProcessBreakCustomer2(ref currCustomer, ref sessionCount);
+
+        }
+
+        public void ProcessBreakCustomer(ref string currCustomer, ref int sessionCount, Booking nextBooking)
+        {
+            System.Console.WriteLine(currCustomer + "'s Session Total:\t" + sessionCount);
+            currCustomer = nextBooking.GetCustomerName();
+            sessionCount = 1;
+        }
+        public void ProcessBreakCustomer2(ref string currCustomer, ref int sessionCount)
+        { 
+            System.Console.WriteLine(currCustomer + "'s Session Total:\t" + sessionCount);
         }
 
         public void PrintHistoricalRevenueReports()

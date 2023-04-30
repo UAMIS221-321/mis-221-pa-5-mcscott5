@@ -58,7 +58,7 @@ namespace mis_221_pa_5_mcscott5
             if (userInput == "1")
             {
                 System.Console.WriteLine("view session");
-                bUtil.ViewAvailableTrainingSessionsByTrainer();
+                bUtil.ViewAllAvailableTrainingSessions();
             }
             else if (userInput == "2")
             {

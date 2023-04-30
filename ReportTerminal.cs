@@ -63,6 +63,7 @@ namespace mis_221_pa_5_mcscott5
             else if (userInput == "2")
             {
                 System.Console.WriteLine("all customers");
+                rGen.PrintHistoricalCustomerReports();
             }
             else if (userInput == "3")
             {

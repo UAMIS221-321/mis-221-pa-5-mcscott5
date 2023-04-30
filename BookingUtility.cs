@@ -67,6 +67,8 @@ namespace mis_221_pa_5_mcscott5
                     string customerEmail = Console.ReadLine();
 
                     Booking newBooking = new Booking(newID, customerName, customerEmail, l.GetDate(), l.GetTrainerId(), l.GeTrainerName(), l.GetCost(), "Booked");
+                    l.SetListingStatus("Taken");
+                    ListingUtility.Save();
                     Bookings.Add(newBooking);
                     Save();
                     break;

@@ -38,6 +38,11 @@ namespace mis_221_pa_5_mcscott5
 
             System.Console.WriteLine("Please enter a date: ");
             string newDate = Console.ReadLine();
+            while(!ValidDate(newDate)){
+                System.Console.WriteLine("Invalid Date!");
+                System.Console.WriteLine("Please enter a date: ");
+                newDate = Console.ReadLine();
+            }
             l.SetDate(newDate);
 
             System.Console.WriteLine("Please enter a start time: ");
@@ -131,13 +136,11 @@ namespace mis_221_pa_5_mcscott5
             //both at same time?
 
             System.Console.WriteLine("Please enter what you want to edit: ");
-            Console.WriteLine("1:   Trainer Id");
-            Console.WriteLine("2:   Name");
-            Console.WriteLine("3:   Date");
-            Console.WriteLine("4:   Start Time");
-            //Console.WriteLine("5:   End Time");
-            Console.WriteLine("6:   Cost");
-            Console.WriteLine("7:   Status");
+            Console.WriteLine("1:   Trainer Name");
+            Console.WriteLine("2:   Date");
+            Console.WriteLine("3:   Time");
+            Console.WriteLine("4:   Cost");
+            Console.WriteLine("5:   Status");
             string menuOption = Console.ReadLine();
 
             foreach (Listing l in Listings)
@@ -146,33 +149,31 @@ namespace mis_221_pa_5_mcscott5
                 {
                     if (menuOption == "1")
                     {
-                        System.Console.WriteLine("Please enter what you wish to change their name to: ");
-                        string newName = Console.ReadLine();
-                        //t.SetName(newName);
-                        System.Console.WriteLine("Name has been changed to " + newName);
+                        foreach (Trainer t in TrainersUtility.Trainers){
+                            if (t.GetStatus() != "Deleted"){
+                                System.Console.WriteLine(t.GetId() +"\t"+t.GetName());
+                            }
+                        }
+                        System.Console.WriteLine("Please enter the id of the trainer that you wish to change their name to: ");
+                        int newNameId = int.Parse(Console.ReadLine());
+                        foreach (Trainer t in TrainersUtility.Trainers){
+                            if (t.GetId() == newNameId){
+                                l.SetTrainerName(t.GetName());
+                                l.SetTrainerId(t.GetId());
+                                System.Console.WriteLine("Name has been changed to " + t.GetName());
+                                break;
+                            }
+                        }
+                        
                     }
                     else if (menuOption == "2")
-                    {
-                        System.Console.WriteLine("Please enter what you wish to change their mailing address to: ");
-                        string newMail = Console.ReadLine();
-                        //t.SetMailingAddress(newMail);
-                        System.Console.WriteLine("Mailing address has been changed to " + newMail);
-                    }
-                    else if (menuOption == "3")
-                    {
-                        System.Console.WriteLine("Please enter what you wish to change their email address to: ");
-                        string newEmail = Console.ReadLine();
-                        //t.SetEmailAddress(newEmail);
-                        System.Console.WriteLine("Email address has been changed to " + newEmail);
-                    }
-                    else if (menuOption == "4")
                     {
                         System.Console.WriteLine("Please enter what you wish to change the listing date to: ");
                         string newDate = Console.ReadLine();
                         l.SetDate(newDate);
                         System.Console.WriteLine("Listing Date has been changed to " + newDate);
                     }
-                    else if (menuOption == "5")
+                    else if (menuOption == "3")
                     {
                         System.Console.WriteLine("Please enter what you wish to change the listing start time to: ");
                         string newStartTime = Console.ReadLine();
@@ -203,14 +204,14 @@ namespace mis_221_pa_5_mcscott5
 
                         System.Console.WriteLine("Listing time has been changed to " + newStartTime + "-" + newEndTime);
                     }
-                    else if (menuOption == "6")
+                    else if (menuOption == "4")
                     {
                         System.Console.WriteLine("Please enter what you wish to change the listing cost to: ");
                         double newCost = double.Parse(Console.ReadLine());
                         l.SetCost(newCost);
                         System.Console.WriteLine("Cost has been changed to " + newCost);
                     }
-                    else if (menuOption == "7")
+                    else if (menuOption == "5")
                     {
                         System.Console.WriteLine("Please enter what you wish to change the listing status to: ");
                         string newStatus = Console.ReadLine();
@@ -231,7 +232,7 @@ namespace mis_221_pa_5_mcscott5
         }
 
 
-        public void Save()
+        public static void Save()
         {
             StreamWriter outFile = new StreamWriter("listings.txt");
             foreach (Listing l in Listings)
@@ -271,6 +272,15 @@ namespace mis_221_pa_5_mcscott5
                 }
             }
             return false;
+        }
+
+        public bool ValidDate(string trialDate){
+            try {
+                DateOnly.Parse(trialDate);
+            }catch {
+                return false;
+            }
+            return true;
         }
 
         public static bool ListingExists(int searchID)
