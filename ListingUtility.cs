@@ -170,6 +170,11 @@ namespace mis_221_pa_5_mcscott5
                     {
                         System.Console.WriteLine("Please enter what you wish to change the listing date to: ");
                         string newDate = Console.ReadLine();
+                        while(!ValidDate(newDate)){
+                        System.Console.WriteLine("Invalid Date!");
+                        System.Console.WriteLine("Please enter a date: ");
+                        newDate = Console.ReadLine();
+            }
                         l.SetDate(newDate);
                         System.Console.WriteLine("Listing Date has been changed to " + newDate);
                     }
@@ -277,7 +282,7 @@ namespace mis_221_pa_5_mcscott5
         public bool ValidDate(string trialDate){
             try {
                 DateOnly.Parse(trialDate);
-            }catch {
+            } catch {
                 return false;
             }
             return true;

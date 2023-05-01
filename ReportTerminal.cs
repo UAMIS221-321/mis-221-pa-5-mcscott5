@@ -5,7 +5,7 @@ namespace mis_221_pa_5_mcscott5
         public static void reportMenu()
         {
             string userInput = GetMenuChoice();
-            while (userInput != "4")
+            while (userInput != "6")
             {
                 Route(userInput);
                 userInput = GetMenuChoice();
@@ -36,13 +36,15 @@ namespace mis_221_pa_5_mcscott5
             Console.WriteLine("1:   Print Individual Customer Sessions Report");
             Console.WriteLine("2:   Print Historical Customer Sessions Report");
             Console.WriteLine("3:   Print Historical Revenue Report");
-            Console.WriteLine("4:   Return to Main Menu");
+            Console.WriteLine("4:   Print Historical Revenue Chart");
+            Console.WriteLine("5:   Print Historical Income Statement Report");
+            Console.WriteLine("6:   Return to Main Menu");
             System.Console.WriteLine("------------------------------------------");
         }
 
         static bool ValidMenuChoice(string userInput)
         {
-            if (userInput == "1" || userInput == "2" || userInput == "3" || userInput == "4")
+            if (userInput == "1" || userInput == "2" || userInput == "3" || userInput == "4" || userInput == "5" || userInput == "6")
             {
                 return true;
             }
@@ -57,18 +59,31 @@ namespace mis_221_pa_5_mcscott5
             ReportGenerator rGen = new ReportGenerator();
             if (userInput == "1")
             {
-                System.Console.WriteLine("individual customer");
-                rGen.PrintIndividualCustomerReport();
+                //System.Console.WriteLine("individual customer");
+                //rGen.PrintIndividualCustomerReport();
+                rGen.IncomeStatement();
             }
             else if (userInput == "2")
             {
-                System.Console.WriteLine("all customers");
+                //System.Console.WriteLine("all customers");
                 rGen.PrintHistoricalCustomerReports();
             }
             else if (userInput == "3")
             {
-                System.Console.WriteLine("revenue");
+                //System.Console.WriteLine("revenue");
                 rGen.PrintHistoricalRevenueReports();
+                //rGen.PrintHistoricalRevenueChart();
+            }
+            else if (userInput == "4")
+            {
+                //System.Console.WriteLine("revenue");
+                //rGen.PrintHistoricalRevenueReports();
+                rGen.PrintHistoricalRevenueChart();
+            }
+            else if (userInput == "5")
+            {
+                //System.Console.WriteLine("revenue");
+                rGen.IncomeStatement();
             }
 
         }

@@ -5,7 +5,7 @@ namespace mis_221_pa_5_mcscott5
         public static void bookingMenu()
         {
             string userInput = GetMenuChoice();
-            while (userInput != "4")
+            while (userInput != "5")
             {
                 Route(userInput);
                 userInput = GetMenuChoice();
@@ -33,16 +33,17 @@ namespace mis_221_pa_5_mcscott5
         static void DisplayMenu()
         {
             System.Console.WriteLine("------------------------------------------");
-            Console.WriteLine("1:   View available training session");
-            Console.WriteLine("2:   Book a session");
-            Console.WriteLine("3:   Update session status");
-            Console.WriteLine("4:   Return to Main Menu");
+            Console.WriteLine("1:   View all available training sessions");
+            Console.WriteLine("2:   View available training sessions by trainer");
+            Console.WriteLine("3:   Book a session");
+            Console.WriteLine("4:   Update session status");
+            Console.WriteLine("5:   Return to Main Menu");
             System.Console.WriteLine("------------------------------------------");
         }
 
         static bool ValidMenuChoice(string userInput)
         {
-            if (userInput == "1" || userInput == "2" || userInput == "3" || userInput == "4")
+            if (userInput == "1" || userInput == "2" || userInput == "3" || userInput == "4" || userInput == "5")
             {
                 return true;
             }
@@ -57,17 +58,21 @@ namespace mis_221_pa_5_mcscott5
             BookingUtility bUtil = new BookingUtility();
             if (userInput == "1")
             {
-                System.Console.WriteLine("view session");
                 bUtil.ViewAllAvailableTrainingSessions();
             }
             else if (userInput == "2")
             {
-                System.Console.WriteLine("book");
-                bUtil.BookSession();
+                //System.Console.WriteLine("book");
+                bUtil.ViewAvailableTrainingSessionsByTrainer();
             }
             else if (userInput == "3")
             {
-                System.Console.WriteLine("update");
+                //System.Console.WriteLine("book");
+                bUtil.BookSession();
+            }
+            else if (userInput == "4")
+            {
+                //System.Console.WriteLine("update");
                 bUtil.UpdateBookingStatus();
             }
 
