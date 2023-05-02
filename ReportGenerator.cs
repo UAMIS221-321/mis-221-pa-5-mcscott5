@@ -184,11 +184,175 @@ namespace mis_221_pa_5_mcscott5
 
         public void AverageRevenueByTrainerChart()
         {
+            List<Booking> CompletedBookings = new List<Booking>();
+            foreach (Booking b in BookingUtility.Bookings)
+            {
+                if (b.GetStatus() == "Completed")
+                {
+                    CompletedBookings.Add(b);
+                }
+            }
 
-        }
+            for (int i = 0; i < CompletedBookings.Count - 1; i++)
+            {
+                int minIndex = i;
+                for (int j = i + 1; j < CompletedBookings.Count; j++)
+                {
+                    if (CompletedBookings[j].GetTrainerId() < CompletedBookings[minIndex].GetTrainerId())
+                    {
+                        minIndex = j;
+                    }
+                }
+                if (minIndex != i)
+                {
+                    Swap(minIndex, i, CompletedBookings);
+                }
+            }
 
-        public void RetrieveTrainerName()
-        {
+            // foreach (Booking b in CompletedBookings)
+            // {
+            //     System.Console.WriteLine(b.ToString());
+            // }
+            double trainerTotal;
+            int sessionsCount = 1;
+            string currTrainerName;
+            int currTrainerId;
+
+
+
+            try
+            {
+                trainerTotal = CompletedBookings[0].GetCost();
+                sessionsCount = 1;
+                currTrainerName = CompletedBookings[0].GetTrainerName();
+                currTrainerId = CompletedBookings[0].GetTrainerId();
+            }
+            catch
+            {
+                System.Console.WriteLine("No completed bookings!");
+                return;
+            }
+
+            //System.Console.WriteLine("(Totals are in 10s)");
+
+            for (int i = 1; i < CompletedBookings.Count; i++)
+            {
+                if (CompletedBookings[i].GetTrainerId() == currTrainerId)
+                {
+                    trainerTotal += CompletedBookings[i].GetCost();
+                    sessionsCount++;
+                }
+                else
+                {
+                    //ProcessBreakMonth(ref currMonth, ref monthlyTotal, CompletedBookings[i]);
+                    Console.Write(" ");
+                    System.Console.WriteLine(currTrainerName);
+
+                    Console.BackgroundColor = ConsoleColor.DarkBlue;
+
+                    for (var k = 0; k < (trainerTotal / sessionsCount); k++)
+                        Console.Write("⊡");
+
+                    //Console.BackgroundColor = ConsoleColor.Black;
+                    Console.ResetColor();
+
+                    Console.Write(" ");
+
+                    Console.WriteLine(trainerTotal / sessionsCount);
+
+                    //System.Console.WriteLine(monthName + "\t" + monthlyTotal);
+                    trainerTotal = CompletedBookings[i].GetCost();
+                    sessionsCount = 1;
+                    currTrainerName = CompletedBookings[i].GetTrainerName();
+                    currTrainerId = CompletedBookings[i].GetTrainerId();
+                }
+
+            }
+
+            Console.Write(" ");
+            System.Console.WriteLine(currTrainerName);
+
+            Console.BackgroundColor = ConsoleColor.DarkBlue;
+
+            for (var k = 0; k < (trainerTotal / sessionsCount); k++)
+                Console.Write("⊡");
+
+            //Console.BackgroundColor = ConsoleColor.Black;
+            Console.ResetColor();
+
+            Console.Write(" ");
+
+            Console.WriteLine(trainerTotal / sessionsCount);
+
+
+            System.Console.WriteLine("Would you to save this document to a file? (Y/N)");
+            string fileOption = Console.ReadLine();
+
+            if (fileOption == "Y" || fileOption == "y")
+            {
+                System.Console.WriteLine("Please enter file name to send the file to: ");
+                string outputFileName = Console.ReadLine();
+                StreamWriter outFile = new StreamWriter($"{outputFileName}.txt");
+
+                trainerTotal = CompletedBookings[0].GetCost();
+                sessionsCount = 1;
+                currTrainerName = CompletedBookings[0].GetTrainerName();
+                currTrainerId = CompletedBookings[0].GetTrainerId();
+
+                for (int i = 1; i < CompletedBookings.Count; i++)
+                {
+                    if (CompletedBookings[i].GetTrainerId() == currTrainerId)
+                    {
+                        trainerTotal += CompletedBookings[i].GetCost();
+                        sessionsCount++;
+                    }
+                    else
+                    {
+                        outFile.Write(" ");
+                        outFile.WriteLine(currTrainerName);
+
+                        //Console.BackgroundColor = ConsoleColor.DarkBlue;
+
+                        for (var k = 0; k < (trainerTotal / sessionsCount); k++)
+                            outFile.Write("⊡");
+
+                        //Console.BackgroundColor = ConsoleColor.Black;
+                        //Console.ResetColor();
+
+                        outFile.Write(" ");
+
+                        outFile.WriteLine(trainerTotal / sessionsCount);
+
+                        //System.Console.WriteLine(monthName + "\t" + monthlyTotal);
+                        trainerTotal = CompletedBookings[i].GetCost();
+                        sessionsCount = 1;
+                        currTrainerName = CompletedBookings[i].GetTrainerName();
+                        currTrainerId = CompletedBookings[i].GetTrainerId();
+                    }
+
+                }
+
+                outFile.Write(" ");
+                outFile.WriteLine(currTrainerName);
+
+                //Console.BackgroundColor = ConsoleColor.DarkBlue;
+
+                for (var k = 0; k < (trainerTotal / sessionsCount); k++)
+                    outFile.Write("⊡");
+
+                //Console.BackgroundColor = ConsoleColor.Black;
+                //Console.ResetColor();
+
+                outFile.Write(" ");
+
+                outFile.WriteLine(trainerTotal / sessionsCount);
+                outFile.Close();
+            }
+            else
+            {
+                return;
+            }
+
 
         }
 
@@ -627,7 +791,7 @@ namespace mis_221_pa_5_mcscott5
 
                         outFile.Write(" ");
 
-                        
+
                         outFile.WriteLine(monthlyTotal);
 
                         //System.Console.WriteLine(monthName + "\t" + monthlyTotal);

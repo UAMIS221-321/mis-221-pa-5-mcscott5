@@ -50,8 +50,14 @@ namespace mis_221_pa_5_mcscott5
                 }
             }
 
-            Save();
+            foreach (Listing l in ListingUtility.Listings){
+                if (l.GetTrainerId() == deleteID && l.GetListingStatus() == "Open"){
+                    l.SetListingStatus("Deleted");
+                }
+            }
 
+            Save();
+            ListingUtility.Save();
         }
 
         public void EditTrainer()

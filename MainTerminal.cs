@@ -2,7 +2,7 @@ namespace mis_221_pa_5_mcscott5
 {
     public class MainTerminal
     {
-        public void mainMenu()
+        public void MainMenu()
         {
             string userInput = GetMenuChoice();
             while (userInput != "5")

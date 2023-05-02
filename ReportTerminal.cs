@@ -5,7 +5,7 @@ namespace mis_221_pa_5_mcscott5
         public static void reportMenu()
         {
             string userInput = GetMenuChoice();
-            while (userInput != "6")
+            while (userInput != "7")
             {
                 Route(userInput);
                 userInput = GetMenuChoice();
@@ -38,13 +38,14 @@ namespace mis_221_pa_5_mcscott5
             Console.WriteLine("3:   Print Historical Revenue Report");
             Console.WriteLine("4:   Print Historical Revenue Chart");
             Console.WriteLine("5:   Print Historical Income Statement Report");
-            Console.WriteLine("6:   Return to Main Menu");
+            Console.WriteLine("6:   Print Average Revenue By Trainer Report");
+            Console.WriteLine("7:   Return to Main Menu");
             System.Console.WriteLine("------------------------------------------");
         }
 
         static bool ValidMenuChoice(string userInput)
         {
-            if (userInput == "1" || userInput == "2" || userInput == "3" || userInput == "4" || userInput == "5" || userInput == "6")
+            if (userInput == "1" || userInput == "2" || userInput == "3" || userInput == "4" || userInput == "5" || userInput == "6" || userInput == "7")
             {
                 return true;
             }
@@ -60,8 +61,8 @@ namespace mis_221_pa_5_mcscott5
             if (userInput == "1")
             {
                 //System.Console.WriteLine("individual customer");
-                //rGen.PrintIndividualCustomerReport();
-                rGen.IncomeStatement();
+                rGen.PrintIndividualCustomerReport();
+                //rGen.IncomeStatement();
             }
             else if (userInput == "2")
             {
@@ -84,6 +85,13 @@ namespace mis_221_pa_5_mcscott5
             {
                 //System.Console.WriteLine("revenue");
                 rGen.IncomeStatement();
+                //rGen.AverageRevenueByTrainerChart();
+            }
+            else if (userInput == "6")
+            {
+                //System.Console.WriteLine("revenue");
+                //rGen.IncomeStatement();
+                rGen.AverageRevenueByTrainerChart();
             }
 
         }
