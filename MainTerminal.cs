@@ -57,22 +57,22 @@ namespace mis_221_pa_5_mcscott5
         {
             if (userInput == "1")
             {
-                System.Console.WriteLine("trainer");
+                //System.Console.WriteLine("trainer");
                 TrainerTerminal.trainerMenu();
             }
             else if (userInput == "2")
             {
-                System.Console.WriteLine("listing");
+                //System.Console.WriteLine("listing");
                 ListingTerminal.listingMenu();
             }
             else if (userInput == "3")
             {
-                System.Console.WriteLine("booking");
+                //System.Console.WriteLine("booking");
                 BookingTerminal.bookingMenu();
             }
             else if (userInput == "4")
             {
-                System.Console.WriteLine("reports");
+                //System.Console.WriteLine("reports");
                 ReportTerminal.reportMenu();
             }
 

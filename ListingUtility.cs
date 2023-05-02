@@ -260,11 +260,7 @@ namespace mis_221_pa_5_mcscott5
             }
 
             inFile.Close();
-            foreach (Listing l in Listings)
-            {
-                System.Console.WriteLine(l.ToString());
-                System.Console.WriteLine("");
-            }
+            
         }
 
         public bool TrainerExists(int searchID)

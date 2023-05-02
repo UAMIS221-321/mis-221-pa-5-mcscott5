@@ -145,11 +145,7 @@ namespace mis_221_pa_5_mcscott5
             }
 
             inFile.Close();
-            foreach (Booking b in Bookings)
-            {
-                System.Console.WriteLine(b.ToString());
-                System.Console.WriteLine("");
-            }
+            
         }
 
 

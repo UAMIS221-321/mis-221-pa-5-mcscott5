@@ -57,17 +57,17 @@ namespace mis_221_pa_5_mcscott5
             ListingUtility lUtil = new ListingUtility();
             if (userInput == "1")
             {
-                System.Console.WriteLine("add");
+                //System.Console.WriteLine("add");
                 lUtil.AddListing();
             }
             else if (userInput == "2")
             {
-                System.Console.WriteLine("delete");
+                //System.Console.WriteLine("delete");
                 lUtil.DeleteListing();
             }
             else if (userInput == "3")
             {
-                System.Console.WriteLine("edit");
+                //System.Console.WriteLine("edit");
                 lUtil.EditListing();
             }
 

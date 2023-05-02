@@ -85,11 +85,11 @@ namespace mis_221_pa_5_mcscott5
                 }
             }
 
-            foreach (Booking b in CompletedBookings)
-            {
-                System.Console.WriteLine(b.ToString());
-                System.Console.WriteLine("__________________________________");
-            }
+            // foreach (Booking b in CompletedBookings)
+            // {
+            //     System.Console.WriteLine(b.ToString());
+            //     System.Console.WriteLine("__________________________________");
+            // }
 
             double netSales;
             double costOfSales;
@@ -362,8 +362,8 @@ namespace mis_221_pa_5_mcscott5
             List<Booking> CompletedBookings = new List<Booking>();
             foreach (Booking b in BookingUtility.Bookings)
             {
-
-                CompletedBookings.Add(b);
+                if (b.GetStatus() == "Completed")
+                    CompletedBookings.Add(b);
 
             }
 
@@ -506,10 +506,10 @@ namespace mis_221_pa_5_mcscott5
                 }
             }
 
-            foreach (Booking b in CompletedBookings)
-            {
-                System.Console.WriteLine(b.ToString());
-            }
+            // foreach (Booking b in CompletedBookings)
+            // {
+            //     System.Console.WriteLine(b.ToString());
+            // }
 
             int currMonth;
             int currYear;
@@ -643,10 +643,10 @@ namespace mis_221_pa_5_mcscott5
                 }
             }
 
-            foreach (Booking b in CompletedBookings)
-            {
-                System.Console.WriteLine(b.ToString());
-            }
+            // foreach (Booking b in CompletedBookings)
+            // {
+            //     System.Console.WriteLine(b.ToString());
+            // }
 
             int currMonth;
             int currYear;

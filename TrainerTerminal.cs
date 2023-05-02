@@ -57,17 +57,17 @@ namespace mis_221_pa_5_mcscott5
             TrainersUtility tutil = new TrainersUtility();
             if (userInput == "1")
             {
-                System.Console.WriteLine("add");
+                //System.Console.WriteLine("add");
                 tutil.AddTrainer();
             }
             else if (userInput == "2")
             {
-                System.Console.WriteLine("delete");
+                //System.Console.WriteLine("delete");
                 tutil.DeleteTrainer();
             }
             else if (userInput == "3")
             {
-                System.Console.WriteLine("edit");
+                //System.Console.WriteLine("edit");
                 tutil.EditTrainer();
             }
 
